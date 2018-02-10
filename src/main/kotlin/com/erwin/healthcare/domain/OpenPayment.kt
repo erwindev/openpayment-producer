@@ -6,7 +6,7 @@ package com.erwin.healthcare.domain
 data class OpenPayment (
     var providerId: String,
     var providerName: String,
-    var paymentAmount: Number,
+    var paymentAmount: String,
     var payerId: String,
     var payerName: String
 )

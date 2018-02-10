@@ -37,7 +37,7 @@ class Application: CommandLineRunner {
                 var openPayment: OpenPayment = OpenPayment(
                         providerId = line[5],
                         providerName = line[6] + " " + line[7] + " " + line[8],
-                        paymentAmount = line[30].toDouble(),
+                        paymentAmount = line[30],
                         payerId = line[26],
                         payerName = line[27])
 
