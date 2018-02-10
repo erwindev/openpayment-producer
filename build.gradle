@@ -1,0 +1,47 @@
+group 'com.erwin.healthdata'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+buildscript {
+    ext.kotlin_version = '1.2.10'
+    ext.springBootVersion = '1.5.9.RELEASE'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        // 'kotlin' plugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // 'kotlin-spring' plugin
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
+        // 'spring-boot' plugin
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'kotlin-spring'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.springframework.boot:spring-boot-starter:$springBootVersion"
+    compile "com.opencsv:opencsv:4.1"
+    compile "com.google.code.gson:gson:2.8.2"
+    compile "org.apache.kafka:kafka-clients:0.10.2.0"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
+
+
+jar {
+    baseName = 'openpayment-producer'
+}
